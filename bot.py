@@ -7,7 +7,7 @@ client = discord.Client()
 
 @client.event
 async def on_ready():
-    print(f'Eingeloggt als User {client.user.name}')
+    print(f'Logged in as {client.user.name}')
     client.loop.create_task(status_task())
 
 async def status_task():
