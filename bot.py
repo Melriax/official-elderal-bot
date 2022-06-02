@@ -1,22 +1,22 @@
 import asyncio
 from http import client
 import discord
+from discord.ext import commands
 
 TOKEN = "OTgwNzk5NDY1MDk3MTYyNzgy.Gz5aWe.pwsvj1FbnR5e2NaXq58TxwLXBk3ZkqVB0VVANE"
-client = discord.Client()
+PREFIX = "!"
+bot = commands.Bot(command_prefix=PREFIX)
 
-@client.event
+@bot.event
 async def on_ready():
-    print(f'Logged in as {client.user.name}')
-    client.loop.create_task(status_task())
+    print(f'Logged in as {bot.user.name}')
+    bot.loop.create_task(status_task())
 
 async def status_task():
     while True:
-        await client.change_presence(activity=discord.Game('Destiny 2'), status=discord.Status.online)
-        await asyncio.sleep(20)
-        await client.change_presence(activity=discord.Game('Official Elderal Bot'), status=discord.Status.online)
-        await asyncio.sleep(20)
+        await bot.change_presence(activity=discord.Game('Destiny 2'), status=discord.Status.online)
+        await asyncio.sleep(10)
+        await bot.change_presence(activity=discord.Game('Official Elderal Bot'), status=discord.Status.online)
+        await asyncio.sleep(10)
 
-
-
-client.run(TOKEN)
+bot.run(TOKEN)
